@@ -45,6 +45,7 @@
         <div class="col-md-4">
           <div class="card-box-a card-shadow">
             <div class="img-box-a">
+             
               <img src="{{asset($item->image_one)}}" alt="" class="img-a img-fluid">
             </div>
             <div class="card-overlay">
@@ -56,7 +57,7 @@
                 </div>
                 <div class="card-body-a">
                   <div class="price-box d-flex">
-                    <span class="price-a">rent | $ {{$item->rent_fee}}</span>
+                    <span class="price-a">rent | $ {{$item->rent_fee }}</span>
                   </div>
                   <a href="{{route('rents.show',['id'=>$item->id])}}" class="link-a">Click here to view
                     <span class="ion-ios-arrow-forward"></span>
@@ -88,6 +89,7 @@
             </div>
           </div>
         </div>
+       
         @endforeach
       </div>
       <div class="row">

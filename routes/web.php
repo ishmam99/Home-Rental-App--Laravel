@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
-
+use App\Http\Controllers\BookingController;
 use App\Http\Controllers\RentalController;
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +26,12 @@ Route::get('admin',[AdminController::class,'index'])->name('admin')->middleware(
 
 Route::get('admin/rents',[AdminController::class,'rents'])->name('admin.rents')->middleware('admin');
 Route::get('admin/bookings',[AdminController::class,'bookings'])->name('bookings')->middleware('admin');
+
+Route::get('admin/bookings/delete/{id}',[BookingController::class,'delete'])->name('delete.bookings')->middleware('admin');
+
+Route::get('admin/bookings/active/{id}',[BookingController::class,'active'])->name('active.bookings')->middleware('admin');
+
+Route::get('admin/bookings/inactive/{id}',[BookingController::class,'inactive'])->name('inactive.bookings')->middleware('admin');
 //END-ADMIN
 Route::get('rents',[RentalController::class,'index'])->name('rents');
 Route::get('rents/show/{id}',[RentalController::class,'show'])->name('rents.show');
@@ -41,4 +47,4 @@ Route::get('/convert-to-json', function () {
     return App\Models\Rental::paginate(6);
 });
 
-Route::get('booking/{id}',[App\Http\Controllers\BookingController::class,'create'])->name('booking.create');
+Route::get('booking/{id}',[BookingController::class,'create'])->name('booking.create');

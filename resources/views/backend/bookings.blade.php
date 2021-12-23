@@ -29,7 +29,7 @@
                                             <th>Client Phone</th>
                                             <th>Renter Name</th>
                                             <th>Renter Phone</th>
-                                          
+                                          <th>Action</th>
                                            
                                         </tr>
                                     </thead>
@@ -42,7 +42,20 @@
                                             <td>{{$item->phone}}</td>
                                            <?php $client=DB::table('users')->where('id',$item->user_id)->first(); ?>
                                             <td >{{$client->name}}</td>
-                                             <td>{{$item->rental_phone}}</td>
+                                             <td>{{$client->phone}}</td>
+                                              <td>
+                                               
+                                                
+                                                <a href="{{route('delete.bookings',['id' => $item->id])}}" class="btn btn-danger" id="delete" title="Delete"><i class="fa fa-trash-o"> </i></a>
+                                               
+                                                @if ($item->status==FALSE)
+                                                    <a href="{{route('inactive.bookings',['id' => $item->id]) }}"class="btn btn-warning" title="Inactive"><i class="fa fa-thumbs-down"></i></a>
+                                                @else
+                                                    <a href="{{route('active.bookings',['id' => $item->id]) }}"class="btn btn-success" title="Active"> <i class="fa fa-thumbs-up"></i></a>
+                                                @endif
+                                                
+                                            </td> 
+
                                         </tr>
                                         @endforeach
                                     </tbody>

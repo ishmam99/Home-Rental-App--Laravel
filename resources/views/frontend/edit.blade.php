@@ -2,7 +2,7 @@
 @section('content')
 <section class="section-services section-t8">
    <div class="container"> <div class=" text-center mt-5 ">
-        <h1>Add New House Rent Information</h1>
+        <h1>Update House Rent Information</h1>
     </div>
     <div class="row ">
         <div class="col-lg-7 mx-auto">

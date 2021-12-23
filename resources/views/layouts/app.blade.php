@@ -134,7 +134,7 @@
         <span></span>
         <span></span>
       </button>
-      <a class="navbar-brand text-brand" href="{{URL::to('/')}}">Estate<span class="color-b">Agency</span></a>
+      <a class="navbar-brand text-brand" href="{{URL::to('/')}}">Rental<span class="color-b">Home</span></a>
       <button type="button" class="btn btn-link nav-search navbar-toggle-box-collapse d-md-none" data-toggle="collapse"
         data-target="#navbarTogglerDemo01" aria-expanded="false">
         <span class="fa fa-search" aria-hidden="true"></span>
@@ -142,10 +142,15 @@
       <div class="navbar-collapse collapse justify-content-center" id="navbarDefault">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link active" href="{{url('/')}}">Home</a>
+            <a class="nav-link " href="{{url('/')}}">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{route('home')}}">Profile</a>
+            @if (Auth::check()&& Auth::user()->role_id==1)
+                <a class="nav-link" href="{{route('admin')}}">Profile</a>
+            @else
+                 <a class="nav-link" href="{{route('home')}}">Profile</a>
+            @endif
+           
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{{route('rents')}}">Rents</a>
@@ -453,6 +458,18 @@
           }
         @endif
      </script>  
+    <script>
+      
+       $(document).ready(function(){
+         var links =$('li').children();
+         $.each(links, function(key, value){
+           if(value.href ==document.URL)
+           {
+             $(this).addClass('active');
+           }
+         });
+       })
+    </script>
 
 </body>
 </html>

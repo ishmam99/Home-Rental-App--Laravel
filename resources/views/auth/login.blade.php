@@ -1,11 +1,18 @@
+<style type="text/css">
+body {
+    overflow-x:hidden;
+}
+</style>
 @extends('layouts.app')
 
 @section('content')
+
+<section class="section-services section-t8">
 <div class="row">
 <div class="col-lg-6">
 
- <section class="section-services section-t8">
-     <br>
+ 
+    
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-10">
@@ -78,10 +85,10 @@
         </div>
     </div>
 </div>
- </section>
+ 
 </div>
 <div class="col-lg-6">
-    <section class="section-services section-t8">
+ 
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-10">
@@ -141,10 +148,10 @@
                             <label for="role_id" class="col-md-4 col-form-label text-md-right">{{ __('User Type') }}</label>
 
                             <div class="col-md-6">
-                                 <select name="role_id" class="custom-select custom-select-lg mb-3">
-                                    <option selected>Select User Type</option>
+                                 <select name="role_id" class="custom-select custom-select-lg mb-3" required>
+                                    <option value="">Select User Type</option>
                                    
-                                    <option value="2">Renter</option>
+                                    <option value="2">Landlord</option>
                                     <option value="3">Client</option>
                                  </select>
 
@@ -192,8 +199,9 @@
         </div>
     </div>
 </div>
-    </section>
-</div>
-</div>
+    
 
+</div>
+</div>
+</section>
 @endsection

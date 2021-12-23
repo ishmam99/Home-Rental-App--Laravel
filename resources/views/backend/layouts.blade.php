@@ -30,7 +30,14 @@
   <div style="color: white;
 padding: 15px 50px 5px 50px;
 float: right;
-font-size: 16px;">  <a href="{{route('logout')}}" class="btn btn-danger square-btn-adjust">Logout</a> </div>
+font-size: 16px;">   <a class="btn btn-danger square-btn-adjust" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>  </div>
         </nav>   
            <!-- /. NAV TOP  -->
                 <nav class="navbar-default navbar-side" role="navigation">
@@ -42,14 +49,14 @@ font-size: 16px;">  <a href="{{route('logout')}}" class="btn btn-danger square-b
 				
 				
                     <li>
-                        <a  class="active-menu"  href="{{route('admin')}}"><i class="fa fa-dashboard fa-3x"></i> Dashboard</a>
+                        <a class="active-menu"   href="{{route('admin')}}"><i class="fa fa-dashboard fa-3x"></i> Dashboard</a>
                     </li>
                      
                     <li>
                         <a   href="{{route('bookings')}}"><i class="fa fa-qrcode fa-3x"></i> Bookings</a>
                     </li>
 						   <li  >
-                        <a   href="{{route('admin.rents')}}"><i class="fa fa-bar-chart-o fa-3x"></i> Rents</a>
+                        <a  href="{{route('admin.rents')}}"><i class="fa fa-bar-chart-o fa-3x"></i> Rents</a>
                     </li>	
                       
                 </ul>
@@ -78,7 +85,7 @@ font-size: 16px;">  <a href="{{route('logout')}}" class="btn btn-danger square-b
    
     
     <script src="{{asset('backend/assets/js/custom.js')}}"></script>
-    
+   
    
 </body>
 </html>

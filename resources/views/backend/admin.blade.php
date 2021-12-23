@@ -9,7 +9,7 @@
                 <div class="row">
                     <div class="col-md-12">
                      <h2>Admin Dashboard</h2>   
-                        <h5>Welcome Jhon Deo , Love to see you back. </h5>
+                        <h5>Welcome Admin , Love to see you back. </h5>
                     </div>
                 </div>              
                  <!-- /. ROW  -->
@@ -22,29 +22,29 @@
                 </span>
                 <div class="text-box" >
                     <p class="main-text">{{$user}} Users</p>
-                    <p class="text-muted">Messages</p>
+                   
                 </div>
              </div>
                 </div>
              <div class="col-md-3 col-sm-6 col-xs-6">      
              <div class="panel panel-back noti-box">
-                <span class="icon-box bg-color-red set-icon">
+                <span class="icon-box bg-color-blue set-icon">
                     <i class="fa fa-user"></i>
                 </span>
                 <div class="text-box" >
-                    <p class="main-text">{{$renter}} Renters</p>
-                    <p class="text-muted">Messages</p>
+                    <p class="main-text">{{$renter}} Landlord</p>
+                    
                 </div>
              </div>
              </div>
              <div class="col-md-3 col-sm-6 col-xs-6">      
              <div class="panel panel-back noti-box">
-                <span class="icon-box bg-color-red set-icon">
+                <span class="icon-box bg-color-blue set-icon">
                     <i class="fa fa-user"></i>
                 </span>
                 <div class="text-box" >
-                    <p class="main-text">{{$client}} Users</p>
-                    <p class="text-muted">Messages</p>
+                    <p class="main-text">{{$client}} Clients</p>
+                    
                 </div>
              </div>
              </div>
@@ -56,7 +56,7 @@
                 </span>
                 <div class="text-box" >
                     <p class="main-text">{{$rents}} Rents</p>
-                    <p class="text-muted">Remaining</p>
+                  
                 </div>
              </div>
 		     </div>
@@ -66,8 +66,8 @@
                     <i class="fa fa-bell-o"></i>
                 </span>
                 <div class="text-box" >
-                    <p class="main-text">{{$bookings}} New</p>
-                    <p class="text-muted">Bookings</p>
+                    <p class="main-text">{{$bookings}} Bookings</p>
+                   
                 </div>
              </div>
 		     </div>
@@ -82,82 +82,36 @@
                 
                  <!-- /. ROW  -->
                 <div class="row" >
-                    <div class="col-md-3 col-sm-12 col-xs-12">
-  <div class="panel panel-primary text-center no-boder bg-color-green">
-
-                        <div class="panel-body">
-                            <i class="fa fa-comments-o fa-5x"></i>
-                            <h4>200 New Comments </h4>
-                             <h4>See All Comments  </h4>
-                        </div>
-                        <div class="panel-footer back-footer-green">
-                             <i class="fa fa-rocket fa-5x"></i>
-                            Lorem ipsum dolor sit amet sit sit, consectetur adipiscing elitsit sit gthn ipsum dolor sit amet ipsum dolor sit amet
-                            
-                        </div>
-                    </div>
-                    </div>
+                   
                     <div class="col-md-9 col-sm-12 col-xs-12">
                
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                           Responsive Table Example
-                        </div>
+                           Users List
                         <div class="panel-body">
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered table-hover">
                                     <thead>
                                         <tr>
-                                            <th>#</th>
-                                            <th>First Name</th>
-                                            <th>Last Name</th>
-                                            <th>Username</th>
-                                             <th>User No.</th>
+                                            <th>ID</th>
+                                            <th>User Name</th>
+                                            <th>User Type</th>
+                                            <th>Phone</th>
+                                           
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @foreach ($users as $key=>$item)
+                                            
+                                        
                                         <tr>
-                                            <td>1</td>
-                                            <td>Mark</td>
-                                            <td>Otto</td>
-                                            <td>@mdo</td>
-                                            <td>100090</td>
+                                            <td>{{$key+1}}</td>
+                                            <td>{{$item->name}}</td>
+                                            <td>{{$item->role_name}}</td>
+                                            <td>{{$item->phone}}</td>
+                                            
                                         </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>Jacob</td>
-                                            <td>Thornton</td>
-                                            <td>@fat</td>
-                                            <td>100090</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>Larry</td>
-                                            <td>the Bird</td>
-                                            <td>@twitter</td>
-                                            <td>100090</td>
-                                        </tr>
-                                         <tr>
-                                            <td>1</td>
-                                            <td>Mark</td>
-                                            <td>Otto</td>
-                                            <td>@mdo</td>
-                                            <td>100090</td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>Jacob</td>
-                                            <td>Thornton</td>
-                                            <td>@fat</td>
-                                            <td>100090</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>Larry</td>
-                                            <td>the Bird</td>
-                                            <td>@twitter</td>
-                                            <td>100090</td>
-                                        </tr>
+                                       @endforeach
 
                                     </tbody>
                                 </table>

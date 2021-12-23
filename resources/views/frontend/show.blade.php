@@ -31,14 +31,25 @@
                {{$rent->location}}
               </li>
             </ol>
-            @if (Auth::user()->role_id==3)
+             <?php $booked=DB::table('bookings')->where('user_id',Auth::user()->id)->where('rental_id',$rent->id)->first();?>
+             
+            @if (Auth::user()->role_id==3 && $booked==FALSE)
                 
            
             <div class="card justify-content-center" style="background-color: rgb(57, 201, 57)">
-              <h4 class="text-center" style="color:white;"><a href="{{route('booking.create',['id'=>$rent->id],)}}">
-              Book Now</a>
+              <h4 class="text-center" style="color:white; padding:5px;"><a href="{{route('booking.create',['id'=>$rent->id],)}}">
+              Book Now </a>
             </h4>
             </div>
+            
+           @else
+               <div class="card justify-content-center" style="background-color: rgb(226, 58, 28)">
+              <h4 class="text-center" style="color:white; padding:5px;">
+            Booked
+            </h4>
+            </div>
+          
+      
              @endif
           </nav>
         </div>

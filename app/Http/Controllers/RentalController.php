@@ -7,6 +7,7 @@ use App\Models\Rental;
 use App\Models\Booking;
 use Image;
 use Auth;
+use DB;
 class RentalController extends Controller
 {
     public function __construct()
@@ -24,9 +25,12 @@ class RentalController extends Controller
         $rents=Rental::where('user_id',Auth::user()->id)->paginate(6);
         }
         elseif(Auth::user()->role_id==3){
-        $rents=Rental::join('bookings','rentals.id','bookings.rental_id')
+        $rents=DB::table('rentals')
+                        ->join('bookings','rentals.id','bookings.rental_id')
+                        ->select('rentals.*','bookings.user_id')
                         ->where('bookings.user_id',Auth::user()->id)
-                       ->paginate(6);
+                        ->paginate(6);
+                      
         }
         else{
             $rents=Rental::paginate(6);
@@ -54,16 +58,16 @@ class RentalController extends Controller
         $image_two=$req->image_two;
         $image_three=$req->image_three;
         
-                $image_one_name=hexdec(uniqid()).'.'.$image_one->getClientOriginalExtension();
-            Image::make($image_one)->resize(500,600)->save('frontend/img'.$image_one_name);
-            $rent->image_one='frontend/img'.$image_one_name;
+            $image_one_name=hexdec(uniqid()).'.'.$image_one->getClientOriginalExtension();
+            Image::make($image_one)->resize(500,350)->save('frontend/properties/'.$image_one_name);
+            $rent->image_one='frontend/properties/'.$image_one_name;
 
             $image_two_name=hexdec(uniqid()).'.'.$image_two->getClientOriginalExtension();
-            Image::make($image_two)->resize(500,600)->save('frontend/img'.$image_two_name);
-            $rent->image_two='frontend/img'.$image_two_name;
+            Image::make($image_two)->resize(500,350)->save('frontend/properties/'.$image_two_name);
+            $rent->image_two='frontend/properties/'.$image_two_name;
             $image_three_name=hexdec(uniqid()).'.'.$image_three->getClientOriginalExtension();
-            Image::make($image_three)->resize(500,600)->save('frontend/img'.$image_three_name);
-            $rent->image_three='frontend/img'.$image_three_name;
+            Image::make($image_three)->resize(500,350)->save('frontend/properties/'.$image_three_name);
+            $rent->image_three='frontend/properties/'.$image_three_name;
             
         $rent->save();
         
@@ -111,14 +115,14 @@ class RentalController extends Controller
                   unlink($old_img_three);
         
                 $image_one_name=hexdec(uniqid()).'.'.$image_one->getClientOriginalExtension();
-            Image::make($image_one)->resize(500,600)->save('frontend/img'.$image_one_name);
+            Image::make($image_one)->resize(500,350)->save('frontend/img'.$image_one_name);
             $rent->image_one='frontend/img'.$image_one_name;
 
             $image_two_name=hexdec(uniqid()).'.'.$image_two->getClientOriginalExtension();
-            Image::make($image_two)->resize(500,600)->save('frontend/img'.$image_two_name);
+            Image::make($image_two)->resize(500,350)->save('frontend/img'.$image_two_name);
             $rent->image_two='frontend/img'.$image_two_name;
             $image_three_name=hexdec(uniqid()).'.'.$image_three->getClientOriginalExtension();
-            Image::make($image_three)->resize(500,600)->save('frontend/img'.$image_three_name);
+            Image::make($image_three)->resize(500,350)->save('frontend/img'.$image_three_name);
             $rent->image_three='frontend/img'.$image_three_name;
            
         $rent->update();

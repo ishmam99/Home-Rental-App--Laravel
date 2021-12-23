@@ -15,7 +15,10 @@ class AdminController extends Controller
    
     public function index()
     {
-       
+       $users=DB::table('users')
+                                ->join('roles','users.role_id','roles.id')
+                                ->select('users.*','roles.role_name')
+                                ->where('role_id','!=','1')->get();
         $user=DB::table('users')->where('role_id','!=','1')->count();
          $renter=DB::table('users')->where('role_id',2)->count();
          $client=DB::table('users')->where('role_id',3)->count();
@@ -24,7 +27,7 @@ class AdminController extends Controller
         $bookings=DB::table('bookings')->count();
     
 
-        return view('backend.admin',compact('user','rents','bookings','renter','client'));
+        return view('backend.admin',compact('users','user','rents','bookings','renter','client'));
     }
     public function bookings()
     {

@@ -18,6 +18,7 @@ class CreateBookingsTable extends Migration
             $table->integer('rental_id');
             $table->integer('user_id');
             $table->string('phone');
+            $table->boolean('status');
             $table->timestamps();
         });
     }
